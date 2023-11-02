@@ -15,3 +15,5 @@
 ```
 
 ### Enjoy
+
+- hosted link [https://agentinsights-assignment.vercel.app/](https://agentinsights-assignment.vercel.app/)
