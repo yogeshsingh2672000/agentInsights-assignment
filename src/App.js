@@ -3,6 +3,7 @@ import Dashboard from "./components/Dashboard";
 import "./App.css";
 import Result from "./components/Result";
 import usePageVisibility from "./hooks/usePageVisibility";
+import useFullScreen from "./hooks/useFullScreen";
 
 // dummy question we can use API also to fetch questions one by one
 // or a complete dump at once
@@ -78,11 +79,12 @@ const questions = [
 const Answers = {};
 
 function App() {
+  const isFullScreen = useFullScreen();
   const isPageActive = usePageVisibility();
   const [showResult, setshowResult] = useState(false);
 
   return (
-    <div className="App h-screen">
+    <div ref={isFullScreen} className="App h-screen">
       {isPageActive[1] > 1 ? (
         <div className="flex flex-col justify-center items-center text-xl h-full">
           <div className="absolute left-1 top-1 bg-green-100 text-green-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded-[10px]">
