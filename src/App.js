@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dashboard from "./components/Dashboard";
 import "./App.css";
 import Result from "./components/Result";
-import usePageVisibility from "./hooks/pageFocus";
+import usePageVisibility from "./hooks/usePageVisibility";
 
 // dummy question we can use API also to fetch questions one by one
 // or a complete dump at once
