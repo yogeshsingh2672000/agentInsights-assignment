@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Dashboard from "./components/Dashboard";
 import "./App.css";
 import Result from "./components/Result";
+import usePageVisibility from "./hooks/pageFocus";
 
 // dummy question we can use API also to fetch questions one by one
 // or a complete dump at once
@@ -77,11 +78,25 @@ const questions = [
 const Answers = {};
 
 function App() {
+  const isPageActive = usePageVisibility();
   const [showResult, setshowResult] = useState(false);
 
   return (
     <div className="App h-screen">
-      {!showResult ? (
+      {isPageActive[1] > 1 ? (
+        <div className="flex flex-col justify-center items-center text-xl h-full">
+          <div className="absolute left-1 top-1 bg-green-100 text-green-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded-[10px]">
+            Reload to restart
+          </div>
+          <div>You are disqualified</div>
+          <div>
+            Reason:{" "}
+            <span className="bg-red-100 text-red-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-[20px]">
+              Cheating
+            </span>
+          </div>
+        </div>
+      ) : !showResult ? (
         <Dashboard
           questions={questions}
           Answers={Answers}
