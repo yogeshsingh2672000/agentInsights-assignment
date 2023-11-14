@@ -82,10 +82,23 @@ function App() {
   const isFullScreen = useFullScreen();
   const isPageActive = usePageVisibility();
   const [showResult, setshowResult] = useState(false);
+  const [fullScreenConsent, setFullScreenConsent] = useState(false);
 
   return (
     <div ref={isFullScreen} className="App h-screen">
-      {isPageActive[1] > 1 ? (
+      {!fullScreenConsent ? (
+        <div className="flex justify-center items-center h-full">
+          <div className="bg-[#DFCCFB] rounded-[10px] items-center p-6">
+            <div className="mb-[20px]">Allow full screen mode</div>
+            <button
+              onClick={() => setFullScreenConsent(true)}
+              className="bg-[#BEADFA] px-6 py-2 rounded-xl hover:bg-[#D0BFFF]"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      ) : isPageActive[1] > 1 ? (
         <div className="flex flex-col justify-center items-center text-xl h-full">
           <div className="absolute left-1 top-1 bg-green-100 text-green-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded-[10px]">
             Reload to restart
